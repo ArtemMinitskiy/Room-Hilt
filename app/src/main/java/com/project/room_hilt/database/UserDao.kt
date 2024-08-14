@@ -40,30 +40,30 @@ interface UserDao {
     //This method requires Room to run two queries, so add the @Transaction annotation to this method so that the whole operation is performed atomically.
     @Transaction
     @Query("SELECT * FROM User")
-    fun getUsersAndLibraries(): List<UserAndLibrary>
+    suspend fun getUsersAndLibraries(): List<UserAndLibrary>
 
     //One-to-many relationships
     //This method requires Room to run two queries, so add the @Transaction annotation to this method so that the whole operation is performed atomically.
     @Transaction
     @Query("SELECT * FROM User")
-    fun getUsersWithPlaylists(): List<UserWithPlaylists>
+    suspend fun getUsersWithPlaylists(): List<UserWithPlaylists>
 
     //Many-to-many relationships
     //This method requires Room to run two queries, so add the @Transaction annotation to this method so that the whole operation is performed atomically.
     @Transaction
     @Query("SELECT * FROM Playlist")
-    fun getPlaylistsWithSongs(): List<PlaylistWithSongs>
+    suspend fun getPlaylistsWithSongs(): List<PlaylistWithSongs>
 
     //Many-to-many relationships
     //This method requires Room to run two queries, so add the @Transaction annotation to this method so that the whole operation is performed atomically.
     @Transaction
     @Query("SELECT * FROM Song")
-    fun getSongsWithPlaylists(): List<SongWithPlaylists>
+    suspend fun getSongsWithPlaylists(): List<SongWithPlaylists>
 
     //Nested relationships
     //This method requires Room to run two queries, so add the @Transaction annotation to this method so that the whole operation is performed atomically.
     @Transaction
     @Query("SELECT * FROM User")
-    fun getUsersWithPlaylistsAndSongs(): List<UserWithPlaylistsAndSongs>
+    suspend fun getUsersWithPlaylistsAndSongs(): List<UserWithPlaylistsAndSongs>
 
 }

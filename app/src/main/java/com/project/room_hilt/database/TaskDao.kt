@@ -28,5 +28,5 @@ interface TaskDao {
         "SELECT task.taskId, priority_name, name, date FROM task\n" +
                 "INNER JOIN priority ON task.priority_id = priority.id\n"
     )
-    fun getAllStatisticData(): List<TaskPriorityTuple>
+    suspend fun getAllStatisticData(): List<TaskPriorityTuple>
 }
