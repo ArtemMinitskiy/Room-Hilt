@@ -1,9 +1,5 @@
-package com.project.room_hilt
+package com.project.room_hilt.database
 
-import com.project.room_hilt.database.PriorityEntity
-import com.project.room_hilt.database.TaskPriorityTuple
-import com.project.room_hilt.database.Task
-import com.project.room_hilt.database.TaskDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -27,7 +23,7 @@ class TaskRepository @Inject constructor(private val taskDao: TaskDao) {
         }
     }
 
-    suspend fun insertPriority(priority : String) {
+    suspend fun insertPriority(priority: String) {
         withContext(Dispatchers.IO) {
             taskDao.insertPriority(PriorityEntity(priorityName = priority))
         }
@@ -38,7 +34,6 @@ class TaskRepository @Inject constructor(private val taskDao: TaskDao) {
             return@withContext taskDao.getAllPriority()
         }
     }
-
 
     suspend fun deleteTask(task: Task) {
         return taskDao.deleteTask(task)

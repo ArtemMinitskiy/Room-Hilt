@@ -8,7 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -16,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.project.room_hilt.ui.theme.RoomHiltTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,17 +50,88 @@ class MainActivity : ComponentActivity() {
                     Column(modifier = Modifier
                         .align(Alignment.Center)) {
                         Text(
-                            text = "Add",
+                            text = "Add Priority",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.addPriority()
+                                }
+                        )
+                        Text(
+                            text = "Add Tasks",
                             modifier = Modifier
                                 .clickable {
                                     viewModel.addTask()
                                 }
                         )
+                        Spacer(modifier = Modifier.padding(24.dp))
                         Text(
-                            text = "Add Priority",
+                            text = "Add Libraries",
                             modifier = Modifier
                                 .clickable {
-                                    viewModel.addPriority()
+                                    viewModel.addLibraries()
+                                }
+                        )
+                        Text(
+                            text = "Add Users",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.addUsers()
+                                }
+                        )
+                        Text(
+                            text = "Add Playlists",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.addPlaylists()
+                                }
+                        )
+                        Text(
+                            text = "Add Songs",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.addSongs()
+                                }
+                        )
+                        Text(
+                            text = "Add CrossRef",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.addCrossRef()
+                                }
+                        )
+                        Text(
+                            text = "Show Result One-to-one",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.getUsersAndLibraries()
+                                }
+                        )
+                        Text(
+                            text = "Show Result One-to-many",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.getUsersWithPlaylists()
+                                }
+                        )
+                        Text(
+                            text = "Show Result Many-to-many 1",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.getPlaylistsWithSongs()
+                                }
+                        )
+                        Text(
+                            text = "Show Result Many-to-many 2",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.getSongsWithPlaylists()
+                                }
+                        )
+                        Text(
+                            text = "Show Result Nested relationships",
+                            modifier = Modifier
+                                .clickable {
+                                    viewModel.getUsersWithPlaylistsAndSongs()
                                 }
                         )
                     }

@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import com.project.room_hilt.database.AppDatabase
 import com.project.room_hilt.database.TaskDao
+import com.project.room_hilt.database.TaskRepository
+import com.project.room_hilt.database.UserDao
+import com.project.room_hilt.database.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,9 +50,21 @@ class MainModule {
         return appDatabase.taskDao()
     }
 
+//    @Provides
+//    @Singleton
+//    fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
+//        return TaskRepository(taskDao)
+//    }
+
     @Provides
     @Singleton
-    fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
-        return TaskRepository(taskDao)
+    fun provideUserDao(appDatabase: AppDatabase): UserDao {
+        return appDatabase.userDao()
     }
+
+//    @Provides
+//    @Singleton
+//    fun provideUserRepository(userDao: UserDao): UserRepository {
+//        return UserRepository(userDao)
+//    }
 }
